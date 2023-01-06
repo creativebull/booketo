@@ -1,0 +1,25 @@
+Project booketo {
+  database_type: 'PostgreSQL'
+  Note: '''
+    # Booketo Database
+  '''
+}
+
+Table users as U {
+  id bigserial [pk]
+  email varchar [unique, not null]
+  hashed_password varchar [not null]
+  created_at timestamptz [not null, default: `now()`]
+}
+
+
+Table sessions {
+  id uuid [pk]
+  user_id bigint [ref: > U.id, not null]
+  refresh_token varchar [not null]
+  user_agent varchar [not null]
+  client_ip varchar [not null]
+  is_blocked boolean [not null, default: false]
+  expires_at timestamptz [not null]
+  created_at timestamptz [not null, default: `now()`]
+}
