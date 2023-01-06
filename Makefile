@@ -44,7 +44,7 @@ server:
 	go run main.go
 
 mock:
-	mockgen -package mockdb -destination db/mock/store.go github.com/techschool/simplebank/db/sqlc Store
+	mockgen -package mockdb -destination src/db/mock/store.go  github.com/Ayobami-00/booketo-mvc-go-postgres-gin/src/db/sqlc Store
 
 
 .PHONY: network postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 db_docs db_schema sqlc test server mock proto evans redis
