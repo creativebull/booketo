@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/Ayobami-00/booketo-mvc-go-postgres-gin/src/util"
+	"github.com/Ayobami-00/booketo-mvc-go-postgres-gin/src/utils"
 	_ "github.com/lib/pq"
 )
 
@@ -14,7 +14,7 @@ var testQueries *Queries
 var testDB *sql.DB
 
 func TestMain(m *testing.M) {
-	config, err := util.LoadConfig("../../..")
+	config, err := utils.LoadConfig("../../..")
 	if err != nil {
 		log.Fatal("cannot load config:", err)
 	}

@@ -5,16 +5,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Ayobami-00/booketo-mvc-go-postgres-gin/src/util"
+	"github.com/Ayobami-00/booketo-mvc-go-postgres-gin/src/utils"
 	"github.com/stretchr/testify/require"
 )
 
 func CreateRandomUser(t *testing.T) User {
-	hashedPassword, err := util.HashPassword(util.RandomString(6))
+	hashedPassword, err := utils.HashPassword(utils.RandomString(6))
 	require.NoError(t, err)
 
 	arg := CreateUserParams{
-		Email:          util.RandomEmail(),
+		Email:          utils.RandomEmail(),
 		HashedPassword: hashedPassword,
 	}
 
@@ -36,7 +36,7 @@ func TestCreateUser(t *testing.T) {
 
 func TestGetUser(t *testing.T) {
 	user1 := CreateRandomUser(t)
-	user2, err := testQueries.GetUser(context.Background(), user1.ID)
+	user2, err := testQueries.GetUser(context.Background(), user1.Email)
 	require.NoError(t, err)
 	require.NotEmpty(t, user2)
 

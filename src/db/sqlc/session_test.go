@@ -5,13 +5,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Ayobami-00/booketo-mvc-go-postgres-gin/src/util"
+	"github.com/Ayobami-00/booketo-mvc-go-postgres-gin/src/utils"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 )
 
 func createRandomSession(t *testing.T) Session {
-	config, err := util.LoadConfig("../../..")
+	config, err := utils.LoadConfig("../../..")
 	require.NoError(t, err)
 
 	sessionID, err := uuid.NewRandom()
@@ -23,9 +23,9 @@ func createRandomSession(t *testing.T) Session {
 	arg := CreateSessionParams{
 		ID:           sessionID,
 		UserID:       user.ID,
-		RefreshToken: util.RandomString(128),
-		UserAgent:    util.RandomString(10),
-		ClientIp:     util.RandomString(10),
+		RefreshToken: utils.RandomString(128),
+		UserAgent:    utils.RandomString(10),
+		ClientIp:     utils.RandomString(10),
 		IsBlocked:    false,
 		ExpiresAt:    time.Now().Add(config.RefreshTokenDuration),
 	}

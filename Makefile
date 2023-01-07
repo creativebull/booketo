@@ -41,7 +41,7 @@ test:
 	go test -v -cover ./...
 
 server:
-	go run main.go
+	go run src/main.go
 
 mock:
 	mockgen -package mockdb -destination src/db/mock/store.go  github.com/Ayobami-00/booketo-mvc-go-postgres-gin/src/db/sqlc Store
